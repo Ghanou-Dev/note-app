@@ -14,8 +14,12 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  SearchController searchController = SearchController();
+  @override
+  void initState() {
+    super.initState();
+  }
 
+  SearchController searchController = SearchController();
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
@@ -73,7 +77,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                searchController.closeView(note.title);
+                searchController.closeView(note.title); 
                 searchController.clear();
                 Navigator.push(
                   context,
