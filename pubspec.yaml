@@ -31,6 +31,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   flutter_bloc: ^9.1.1
