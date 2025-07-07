@@ -78,7 +78,7 @@ class ItemDeletedNote extends StatelessWidget {
                         context.read<HomeCubit>().fetchAllNotes();
                         
                       },
-                      icon: Icon(Icons.restart_alt, color: secondaryColor),
+                      icon: Icon(Icons.refresh, color: secondaryColor),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),

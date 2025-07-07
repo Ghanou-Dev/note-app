@@ -11,7 +11,6 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  bool langEn = true;
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +42,8 @@ class _SettingsState extends State<Settings> {
               ListTile(
                 tileColor: primaryColor,
                 leading: Icon(Icons.translate, color: secondaryColor),
-                title: Text(langEn ? "العربية" : "English"),
-                trailing: Icon(Icons.restart_alt, color: secondaryColor),
+                title: Text(locale.title == 'Title' ? "العربية" : "English"),
+                trailing: Icon(Icons.refresh, color: secondaryColor),
                 onTap: () {
                   Locale currentLocale = Localizations.localeOf(context);
                   Locale newLocale = currentLocale.languageCode == 'en'
@@ -52,7 +51,6 @@ class _SettingsState extends State<Settings> {
                       : const Locale("en");
                   Notes.setLocale(context, newLocale);
                   setState(() {
-                    langEn = !langEn;
                   });
                 },
               ),
