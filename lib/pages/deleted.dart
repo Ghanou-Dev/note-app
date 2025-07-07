@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_cubit.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_state.dart';
@@ -17,11 +18,12 @@ class Deleted extends StatefulWidget {
 class _DeletedState extends State<Deleted> {
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         title: Text(
-          'Deleted',
+          locale.deleted,
           style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         backgroundColor: primaryColor,

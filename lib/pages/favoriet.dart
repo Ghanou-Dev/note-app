@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/widgets/custom_body.dart';
 
@@ -9,11 +10,12 @@ class Favoriet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         title: Text(
-          'Favoriet',
+          locale.favoriets,
           style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         backgroundColor: primaryColor,

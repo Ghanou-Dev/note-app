@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/bottm_sheet_cubit/bottom_sheet_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
@@ -20,6 +21,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   final TextEditingController noteController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return Container(
       decoration: BoxDecoration(
         color: primaryColor,
@@ -30,12 +32,12 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
           children: <Widget>[
             CustomColorsListView(),
             CustomEditTextField(
-              hint: 'Title',
+              hint: locale.title,
               isTitle: true,
               controller: titleController,
             ),
             CustomEditTextField(
-              hint: 'Note',
+              hint: locale.note,
               isTitle: false,
               controller: noteController,
             ),
@@ -52,9 +54,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                     date: date,
                     color: color,
                   );
-                  context.read<BottomSheetCubit>().addNote(
-                    note: note,
-                  ); 
+                  context.read<BottomSheetCubit>().addNote(note: note);
                   context.read<HomeCubit>().fetchAllNotes();
                   Navigator.pop(context);
                 },
@@ -63,7 +63,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                   fixedSize: Size(MediaQuery.of(context).size.width, 50),
                 ),
                 child: Text(
-                  'Add',
+                  locale.add,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: primaryColor,

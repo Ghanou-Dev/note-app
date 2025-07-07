@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/bottm_sheet_cubit/bottom_sheet_cubit.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_cubit.dart';
@@ -13,6 +14,7 @@ import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_state.dart';
 import 'package:notes/pages/deleted.dart';
 import 'package:notes/pages/favoriet.dart';
+import 'package:notes/pages/settings.dart';
 import 'package:notes/widgets/custom_body.dart';
 import 'package:notes/widgets/custom_bottom_sheet.dart';
 import 'package:notes/widgets/custom_list_tile.dart';
@@ -27,7 +29,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await precacheImage(AssetImage('assets/images/logo.png'), context);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         List<NoteModel> notesList = context.read<HomeCubit>().notes;
@@ -44,6 +55,7 @@ class _HomePageState extends State<HomePage> {
             notes: notes,
             favorietNotes: favorietNotesList,
             deletedNotes: deletedNotesList,
+            locale: locale,
           );
         }
         return homeBody(
@@ -51,6 +63,7 @@ class _HomePageState extends State<HomePage> {
           notes: notesList,
           favorietNotes: favorietNotesList,
           deletedNotes: deletedNotesList,
+          locale: locale,
         );
       },
     );
@@ -61,13 +74,14 @@ class _HomePageState extends State<HomePage> {
     required List<NoteModel> notes,
     required List<NoteModel> deletedNotes,
     required List<NoteModel> favorietNotes,
+    required AppLocalizations locale,
   }) {
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
-          'Keep Note',
+          locale.keep_note,
           style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         iconTheme: IconThemeData(color: secondaryColor),
@@ -95,7 +109,9 @@ class _HomePageState extends State<HomePage> {
             children: [
               SizedBox(
                 child: Stack(
-                  alignment: Alignment.bottomLeft,
+                  alignment: locale.title == 'Title'
+                      ? Alignment.bottomLeft
+                      : Alignment.bottomRight,
                   children: [
                     Image.asset('assets/images/logo.png'),
                     Padding(
@@ -104,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'User ',
+                            locale.user,
                             style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 16,
@@ -112,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            'ToDay : ${DateFormat('yyyy/MM/dd').format(DateTime.now())}',
+                            '${locale.to_day} : ${DateFormat('yyyy/MM/dd').format(DateTime.now())}',
                             style: TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 14,
@@ -131,9 +147,11 @@ class _HomePageState extends State<HomePage> {
               ),
               CustomListTile(
                 onTap: () {
-                  Navigator.of(context).pushReplacementNamed(HomePage.pageRoute);
+                  Navigator.of(
+                    context,
+                  ).pushReplacementNamed(HomePage.pageRoute);
                 },
-                hint: 'All Notes',
+                hint: locale.all_notes,
                 icon: FontAwesomeIcons.house,
                 len: notes.length,
               ),
@@ -154,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      hint: 'Favorites',
+                      hint: locale.favoriets,
                       icon: FontAwesomeIcons.star,
                       len: favorietNotes.length,
                     );
@@ -169,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    hint: 'Favorites',
+                    hint: locale.favoriets,
                     icon: FontAwesomeIcons.star,
                     len: favorietNotes.length,
                   );
@@ -177,7 +195,7 @@ class _HomePageState extends State<HomePage> {
               ),
               CustomListTile(
                 onTap: () {},
-                hint: 'Reminders',
+                hint: locale.reminders,
                 icon: Icons.alarm,
                 len: 0,
               ),
@@ -199,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         );
                       },
-                      hint: 'Trash',
+                      hint: locale.trash,
                       icon: FontAwesomeIcons.trash,
                       len: deleteNotes.length,
                     );
@@ -214,7 +232,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     },
-                    hint: 'Trash',
+                    hint: locale.trash,
                     icon: FontAwesomeIcons.trash,
                     len: deleteNotes.length,
                   );
@@ -225,8 +243,13 @@ class _HomePageState extends State<HomePage> {
                 child: Divider(color: forthColor),
               ),
               CustomListTile(
-                onTap: () {},
-                hint: 'Settings',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Settings()),
+                  );
+                },
+                hint: locale.settings,
                 icon: FontAwesomeIcons.gear,
                 len: 0,
               ),

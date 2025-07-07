@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/pages/cubits/display_cubit/display_cubit.dart';
 import 'package:notes/pages/cubits/display_cubit/display_state.dart';
 import 'package:notes/pages/cubits/favoriet_cubit/favoriet_cubit.dart';
@@ -43,6 +44,7 @@ class _DisplayNoteState extends State<DisplayNote> {
 
   @override
   Widget build(BuildContext context) {
+    
     return BlocBuilder<DisplayCubit, DisplayState>(
       builder: (context, state) {
         if (state is DisplaySuccess) {
@@ -55,19 +57,20 @@ class _DisplayNoteState extends State<DisplayNote> {
   }
 
   Scaffold displayBody(BuildContext context, {required NoteModel note}) {
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: primaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
         title: Text(
-          'Edit',
+          locale.edit,
           style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         actions: <Widget>[
           IconButton(
             onPressed: () async {
               editableNote.isFavoriet = !editableNote.isFavoriet;
-              
+
               setState(() {});
             },
             icon: Icon(
@@ -107,12 +110,12 @@ class _DisplayNoteState extends State<DisplayNote> {
           children: <Widget>[
             CustomEditColorsList(note: editableNote),
             CustomEditTextField(
-              hint: 'Title',
+              hint: locale.title,
               controller: titleController,
               isTitle: true,
             ),
             CustomEditTextField(
-              hint: 'Note',
+              hint: locale.note,
               controller: contentController,
               isTitle: false,
             ),

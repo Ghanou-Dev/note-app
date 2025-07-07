@@ -1,0 +1,21 @@
+{
+   "@@locale": "en",
+   "title": "Title",
+   "note": "Note",
+   "keep_note": "Keep Note",
+   "no_notes": "No Notes",
+   "search": "Search",
+   "user": "User",
+   "to_day": "ToDay",
+   "all_notes": "All Notes",
+   "favoriets": "Favoriets",
+   "reminders": "Remineders",
+   "trash": "Trash",
+   "settings": "Settings",
+   "deleted": "Deleted",
+   "add": "Add",
+   "english":"English",
+   "arabic": "Arabic",
+   "edit": "Edit",
+   "general": "General"
+}

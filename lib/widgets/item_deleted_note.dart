@@ -14,10 +14,6 @@ class ItemDeletedNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => DisplayNote(note: note)),
-        // );
       },
       child: Container(
         decoration: BoxDecoration(

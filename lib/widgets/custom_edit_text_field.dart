@@ -26,7 +26,7 @@ class CustomEditTextField extends StatelessWidget {
         child: TextField(
           // direction languages
           // textDirection: TextDirection.,
-          textAlign: TextAlign.start,
+          // textAlign: TextAlign.start,
           /////////////////////////////////
           textCapitalization: TextCapitalization.sentences,
           textInputAction: TextInputAction.newline,

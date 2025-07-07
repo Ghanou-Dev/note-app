@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/display_note.dart';
 
@@ -17,6 +18,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return Theme(
       data: ThemeData(
         textSelectionTheme: TextSelectionThemeData(
@@ -31,7 +33,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             borderRadius: BorderRadiusGeometry.circular(20),
           ),
         ),
-        barHintText: 'Search',
+        barHintText: locale.search,
         barPadding: WidgetStatePropertyAll(EdgeInsets.all(15)),
         barTextStyle: WidgetStatePropertyAll(
           TextStyle(fontWeight: FontWeight.bold),
@@ -87,7 +89,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             return [
               ListTile(
                 title: Text(
-                  'No Notes',
+                  locale.no_notes,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),

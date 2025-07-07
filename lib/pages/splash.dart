@@ -22,7 +22,6 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await precacheImage(AssetImage('assets/images/logo.png'),context);
       await startSplash();
     });
   }
