@@ -14,15 +14,14 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   SearchController searchController = SearchController();
+
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    ////////////////////////////////////////////
+    final FocusScopeNode focusNode = FocusScopeNode();
+    bool didJustDismis = false;
     return Theme(
       data: ThemeData(
         textSelectionTheme: TextSelectionThemeData(
@@ -30,77 +29,90 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           selectionHandleColor: secondaryColor,
         ),
       ),
-      child: SearchAnchor.bar(
-        barBackgroundColor: WidgetStatePropertyAll(primaryColor),
-        barShape: WidgetStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(20),
+      child: FocusScope(
+        node: focusNode,
+        onFocusChange: (isFocused) {
+          if (didJustDismis & isFocused) {
+            didJustDismis = false;
+            focusNode.unfocus();
+          }
+        },
+        ////////////////////////////////////////////////////////////////////////
+        child: SearchAnchor.bar(
+          barBackgroundColor: WidgetStatePropertyAll(primaryColor),
+          barShape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(20),
+            ),
           ),
-        ),
-        barHintText: locale.search,
-        barPadding: WidgetStatePropertyAll(EdgeInsets.all(15)),
-        barTextStyle: WidgetStatePropertyAll(
-          TextStyle(fontWeight: FontWeight.bold),
-        ),
-        barHintStyle: WidgetStatePropertyAll(
-          TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
-        ),
-        barLeading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.search, color: secondaryColor),
-        ),
-        barTrailing: [
-          IconButton(
-            onPressed: () {
-              searchController.clear();
-            },
-            icon: Icon(Icons.clear, color: secondaryColor),
+          barHintText: locale.search,
+          barPadding: WidgetStatePropertyAll(EdgeInsets.all(15)),
+          barTextStyle: WidgetStatePropertyAll(
+            TextStyle(fontWeight: FontWeight.bold),
           ),
-        ],
-
-        barOverlayColor: WidgetStatePropertyAll(
-          primaryColor,
-        ), // whern get out from bar
-        barSide: WidgetStatePropertyAll(BorderSide(color: primaryColor)),
-        viewBackgroundColor: primaryColor,
-        searchController: searchController,
-        suggestionsBuilder: (context, controller) {
-          final query = controller.text.toLowerCase();
-          final filtred = widget.notes
-              .where((note) => note.title.toLowerCase().contains(query))
-              .toList();
-
-          final results = filtred.map((note) {
-            return ListTile(
-              title: Text(
-                note.title,
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              onTap: () {
-                searchController.closeView(note.title); 
+          barHintStyle: WidgetStatePropertyAll(
+            TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
+          ),
+          barLeading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search, color: secondaryColor),
+          ),
+          barTrailing: [
+            IconButton(
+              onPressed: () {
                 searchController.clear();
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) => DisplayNote(note: note),
-                  ),
-                );
-                // go to item ..
               },
-            );
-          }).toList();
-          if (results.isEmpty) {
-            return [
-              ListTile(
+              icon: Icon(Icons.clear, color: secondaryColor),
+            ),
+          ],
+
+          barOverlayColor: WidgetStatePropertyAll(
+            primaryColor,
+          ), // whern get out from bar
+          barSide: WidgetStatePropertyAll(BorderSide(color: primaryColor)),
+          viewBackgroundColor: primaryColor,
+          searchController: searchController,
+          suggestionsBuilder: (context, controller) {
+            final query = controller.text.toLowerCase();
+
+            final filtred = widget.notes
+                .where((note) => note.title.toLowerCase().contains(query))
+                .toList();
+
+            final results = filtred.map((note) {
+              return ListTile(
                 title: Text(
-                  locale.no_notes,
+                  note.title,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-              ),
-            ];
-          }
-          return results;
-        },
+                onTap: () {
+                  didJustDismis = true;
+                  controller.closeView(null);
+                  FocusScope.of(context).unfocus();
+                  searchController.clear();
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => DisplayNote(note: note),
+                    ),
+                  );
+                  // go to item ..
+                },
+              );
+            }).toList();
+            if (results.isEmpty) {
+              return [
+                ListTile(
+                  title: Text(
+                    locale.no_notes,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ];
+            }
+            return results;
+          },
+        ),
       ),
     );
   }
