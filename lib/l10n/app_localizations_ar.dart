@@ -61,4 +61,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get general => 'عام';
+
+  @override
+  String get language => 'اللغات';
 }

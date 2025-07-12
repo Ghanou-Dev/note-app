@@ -46,7 +46,7 @@ class _SplashState extends State<Splash> {
       body: Center(
         child: Image.asset(
           'assets/images/logo.png',
-        ).animate().fadeOut(delay: 1.seconds, duration: Duration(seconds: 3)),
+        ).animate().fadeOut(delay: 1.seconds, duration: Duration(seconds: 2)),
       ),
     );
   }

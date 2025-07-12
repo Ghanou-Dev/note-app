@@ -9,6 +9,8 @@ const String kNotesBox = 'notes';
 const String kFavorietNotes = 'favorietNotes';
 const String kDeletedNotes = 'deletedNotes';
 
+const String kLangEn = 'lang_en';
+
 const List<int> kColors = [
   0xff669bbc,
   0xff3a86ff,
