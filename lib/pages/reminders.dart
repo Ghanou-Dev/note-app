@@ -7,7 +7,9 @@ class Reminders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       appBar: AppBar(
+        backgroundColor: primaryColor,
         title: Text("Reminders", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       body: Center(
