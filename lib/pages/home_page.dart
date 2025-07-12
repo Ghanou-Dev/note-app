@@ -14,6 +14,7 @@ import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_state.dart';
 import 'package:notes/pages/deleted.dart';
 import 'package:notes/pages/favoriet.dart';
+import 'package:notes/pages/reminders.dart';
 import 'package:notes/pages/settings.dart';
 import 'package:notes/widgets/custom_body.dart';
 import 'package:notes/widgets/custom_bottom_sheet.dart';
@@ -194,7 +195,12 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               CustomListTile(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Reminders()),
+                  );
+                },
                 hint: locale.reminders,
                 icon: Icons.alarm,
                 len: 0,

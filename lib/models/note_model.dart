@@ -21,4 +21,24 @@ class NoteModel extends HiveObject {
     required this.color,
     this.isFavoriet = false,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'title': title,
+      'content': content,
+      'color': color,
+      'date': date,
+      'isFavoriet': isFavoriet,
+    };
+  }
+
+  factory NoteModel.fromJson(jsonData) {
+    return NoteModel(
+      title: jsonData['title'],
+      content: jsonData['content'],
+      date: jsonData['date'],
+      color: jsonData['color'],
+      isFavoriet: jsonData['isFavoriet'],
+    );
+  }
 }
