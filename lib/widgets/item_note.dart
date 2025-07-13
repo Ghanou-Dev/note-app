@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/const.dart';
+import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
@@ -61,13 +62,12 @@ class ItemNote extends StatelessWidget {
                   children: <Widget>[
                     IconButton(
                       onPressed: () async {
-                        var homeCubit = context.read<HomeCubit>();
-                        // add note to dleted list ;
-                        await homeCubit.deleteNote(note: note);
-                        await homeCubit.addNoteToDeletedList(note: note);
-                        // fetch all delted notes ...
-                        context.read<DeleteCubit>().fetchAllDeletedNotes();
-                        homeCubit.fetchAllNotes();
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return DeleteDialog(note: note);
+                          },
+                        );
                       },
                       icon: Icon(FontAwesomeIcons.trash),
                     ),
@@ -82,6 +82,57 @@ class ItemNote extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class DeleteDialog extends StatelessWidget {
+  final NoteModel note;
+  const DeleteDialog({required this.note, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations appLocale = AppLocalizations.of(context)!;
+    return AlertDialog(
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12.0),
+            child: Text(
+              appLocale.delete,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: secondaryColor,
+              ),
+            ),
+          ),
+          Text(appLocale.delete_dialog),
+        ],
+      ),
+      actions: [
+        ElevatedButton(
+          onPressed: () async {
+            var homeCubit = context.read<HomeCubit>();
+            // add note to dleted list ;
+            await homeCubit.deleteNote(note: note);
+            await homeCubit.addNoteToDeletedList(note: note);
+            // fetch all delted notes ...
+            context.read<DeleteCubit>().fetchAllDeletedNotes();
+            homeCubit.fetchAllNotes();
+            Navigator.pop(context);
+          },
+          child: Text(appLocale.contine),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(appLocale.cancle),
+        ),
+      ],
     );
   }
 }

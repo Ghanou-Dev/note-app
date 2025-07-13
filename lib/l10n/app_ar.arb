@@ -18,5 +18,9 @@
    "arabic": "العربية",
    "edit": "تعديل",
    "general": "عام",
-   "language": "اللغات"
+   "language": "اللغات",
+   "delete": "حذف",
+   "delete_dialog": "هل انت متأكد من انك تريد حذف هذه الملاحظة؟",
+   "contine": "واصل",
+   "cancle": "الغاء"
 }

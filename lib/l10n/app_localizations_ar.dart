@@ -64,4 +64,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get language => 'اللغات';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get delete_dialog => 'هل انت متأكد من انك تريد حذف هذه الملاحظة؟';
+
+  @override
+  String get contine => 'واصل';
+
+  @override
+  String get cancle => 'الغاء';
 }

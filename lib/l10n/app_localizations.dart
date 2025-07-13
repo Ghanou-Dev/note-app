@@ -211,6 +211,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Languages'**
   String get language;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @delete_dialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you shure you want to delete this note?'**
+  String get delete_dialog;
+
+  /// No description provided for @contine.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get contine;
+
+  /// No description provided for @cancle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancle;
 }
 
 class _AppLocalizationsDelegate

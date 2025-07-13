@@ -88,17 +88,11 @@ class _HomePageState extends State<HomePage> {
         iconTheme: IconThemeData(color: secondaryColor),
         actions: [
           InkWell(
-            onTap: () {
-              debugPrint('kkkkk');
-            },
+            onTap: () {},
             borderRadius: BorderRadius.circular(40),
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: CircleAvatar(
-                backgroundColor: secondaryColor,
-                radius: 24,
-                child: Icon(FontAwesomeIcons.circleUser, color: therdColor),
-              ),
+              padding: const EdgeInsets.all(15.0),
+              child: Icon(Icons.light_mode, color: secondaryColor),
             ),
           ),
         ],

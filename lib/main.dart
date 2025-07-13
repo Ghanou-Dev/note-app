@@ -77,7 +77,6 @@ class _NotesState extends State<Notes> {
         ////////////////////////////////////////////////////////////////////////
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: secondaryColor),
-          // brightness: Brightness.light,
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Splash.pageRoute,

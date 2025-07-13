@@ -38,7 +38,7 @@ class NoteModel extends HiveObject {
       content: jsonData['content'],
       date: jsonData['date'],
       color: jsonData['color'],
-      isFavoriet: jsonData['isFavoriet'],
+      isFavoriet: jsonData['isFavoriet'] ?? false,
     );
   }
 }
