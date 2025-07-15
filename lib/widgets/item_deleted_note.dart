@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/const.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_cubit.dart';
+import 'package:notes/pages/cubits/favoriet_cubit/favoriet_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
 
 class ItemDeletedNote extends StatelessWidget {
@@ -13,8 +14,7 @@ class ItemDeletedNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-      },
+      onTap: () {},
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -76,7 +76,8 @@ class ItemDeletedNote extends StatelessWidget {
                         // restart lists
                         context.read<DeleteCubit>().fetchAllDeletedNotes();
                         context.read<HomeCubit>().fetchAllNotes();
-                        
+                        ////////////////////////////////////////////////////////
+                        context.read<FavorietCubit>().fetchAllFavorietNotes(); 
                       },
                       icon: Icon(Icons.refresh, color: secondaryColor),
                     ),

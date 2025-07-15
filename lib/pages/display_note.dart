@@ -44,7 +44,6 @@ class _DisplayNoteState extends State<DisplayNote> {
 
   @override
   Widget build(BuildContext context) {
-    
     return BlocBuilder<DisplayCubit, DisplayState>(
       builder: (context, state) {
         if (state is DisplaySuccess) {
@@ -70,7 +69,10 @@ class _DisplayNoteState extends State<DisplayNote> {
           IconButton(
             onPressed: () async {
               editableNote.isFavoriet = !editableNote.isFavoriet;
-
+              //////////////////////////////////////////////////////////////////
+              context.read<HomeCubit>().fetchAllNotes();
+              context.read<FavorietCubit>().fetchAllFavorietNotes();
+              //////////////////////////////////////////////////////////////////
               setState(() {});
             },
             icon: Icon(

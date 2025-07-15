@@ -5,6 +5,7 @@ import 'package:notes/const.dart';
 import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
 import 'package:notes/pages/cubits/delete_cubit/delete_cubit.dart';
+import 'package:notes/pages/cubits/favoriet_cubit/favoriet_cubit.dart';
 import 'package:notes/pages/cubits/home_cubit/home_cubit.dart';
 import 'package:notes/pages/display_note.dart';
 
@@ -94,6 +95,7 @@ class DeleteDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations appLocale = AppLocalizations.of(context)!;
     return AlertDialog(
+      backgroundColor: primaryColor,
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,6 +116,10 @@ class DeleteDialog extends StatelessWidget {
       ),
       actions: [
         ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: secondaryColor,
+            foregroundColor: primaryColor,
+          ),
           onPressed: () async {
             var homeCubit = context.read<HomeCubit>();
             // add note to dleted list ;
@@ -122,6 +128,9 @@ class DeleteDialog extends StatelessWidget {
             // fetch all delted notes ...
             context.read<DeleteCubit>().fetchAllDeletedNotes();
             homeCubit.fetchAllNotes();
+            ////////////////////////////////////////////////////////////////////
+            context.read<FavorietCubit>().fetchAllFavorietNotes();
+            ////////////////////////////////////////////////////////////////////
             Navigator.pop(context);
           },
           child: Text(appLocale.contine),
