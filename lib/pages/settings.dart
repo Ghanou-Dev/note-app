@@ -19,6 +19,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => SettingsCubit(),
       child: Scaffold(
@@ -64,7 +65,7 @@ class _SettingsState extends State<Settings> {
                   ],
                 ),
                 SizedBox(
-                  height: 100.h,
+                  height: screenHeight / 9,
                   child: ListView(
                     children: [
                       BlocBuilder<SettingsCubit, SettingsState>(
@@ -167,4 +168,3 @@ class _SettingsState extends State<Settings> {
     );
   }
 }
-
