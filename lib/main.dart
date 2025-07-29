@@ -27,7 +27,7 @@ void main() async {
   bool isEn = prf.getBool(kLangEn) ?? true;
   runApp(
     DevicePreview(
-      enabled: true,
+      enabled: false,
       builder: (context) {
         return Notes(isEn: isEn);
       },
