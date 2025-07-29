@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 
 class CustomListTile extends StatelessWidget {
@@ -19,23 +20,23 @@ class CustomListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20.0),
+        padding:  EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.0.h),
         child: Row(
           children: <Widget>[
             Icon(icon, color: secondaryColor),
-            SizedBox(width: 15),
+            SizedBox(width: 15.w),
             Text(
               hint,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 17,
+                fontSize: 17.sp,
                 color: Colors.black87,
               ),
             ),
             Spacer(),
             len > 0
                 ? CircleAvatar(
-                    radius: 13,
+                    radius: 13.r,
                     backgroundColor: forthColor,
                     child: Text(
                       '$len',

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
@@ -42,7 +43,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           barBackgroundColor: WidgetStatePropertyAll(primaryColor),
           barShape: WidgetStatePropertyAll(
             RoundedRectangleBorder(
-              borderRadius: BorderRadiusGeometry.circular(20),
+              borderRadius: BorderRadiusGeometry.circular(20.r),
             ),
           ),
           barHintText: locale.search,

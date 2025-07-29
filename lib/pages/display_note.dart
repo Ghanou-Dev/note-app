@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/pages/cubits/display_cubit/display_cubit.dart';
@@ -85,7 +86,7 @@ class _DisplayNoteState extends State<DisplayNote> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: secondaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(40),
+          borderRadius: BorderRadiusGeometry.circular(40.r),
         ),
         onPressed: () async {
           // 1. اجلب النص من الحقول وضعه داخل editableNote

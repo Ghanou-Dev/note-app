@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 
 class Reminders extends StatelessWidget {
@@ -18,7 +19,7 @@ class Reminders extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             color: secondaryColor,
-            fontSize: 22,
+            fontSize: 22.sp,
           ),
         ),
       ),

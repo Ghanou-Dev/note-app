@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 
 class CustomEditTextField extends StatelessWidget {
@@ -24,10 +25,6 @@ class CustomEditTextField extends StatelessWidget {
           ),
         ),
         child: TextField(
-          // direction languages
-          // textDirection: TextDirection.,
-          // textAlign: TextAlign.start,
-          /////////////////////////////////
           textCapitalization: TextCapitalization.sentences,
           textInputAction: TextInputAction.newline,
           maxLines: null,
@@ -45,7 +42,7 @@ class CustomEditTextField extends StatelessWidget {
             ),
             border: isTitle
                 ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     borderSide: BorderSide(color: secondaryColor),
                   )
                 : UnderlineInputBorder(
@@ -53,7 +50,7 @@ class CustomEditTextField extends StatelessWidget {
                   ),
             focusedBorder: isTitle
                 ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     borderSide: BorderSide(color: secondaryColor),
                   )
                 : UnderlineInputBorder(
@@ -61,7 +58,7 @@ class CustomEditTextField extends StatelessWidget {
                   ),
             enabledBorder: isTitle
                 ? OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(20.r),
                     borderSide: BorderSide(color: Colors.grey),
                   )
                 : UnderlineInputBorder(

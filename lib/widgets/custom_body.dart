@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/models/note_model.dart';
@@ -12,6 +13,7 @@ class CustomBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final shortestSide = MediaQuery.of(context).size.shortestSide;
     return notes.isEmpty
         ? Column(
             children: [
@@ -23,7 +25,7 @@ class CustomBody extends StatelessWidget {
               Text(
                 locale.no_notes,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: shortestSide < 600 ? 18.sp : 36.sp,
                   fontWeight: FontWeight.bold,
                   color: secondaryColor,
                 ),
@@ -34,23 +36,34 @@ class CustomBody extends StatelessWidget {
         : Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(15),
                 child: CustomSearchBar(notes: notes),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                    itemCount: notes.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 6,
-                      crossAxisSpacing: 6,
-                      childAspectRatio: 0.9,
-                    ),
-                    itemBuilder: (context, index) {
-                      return ItemNote(
-                        note: notes[index],
+                  child: OrientationBuilder(
+                    builder: (context, orientation) {
+                      return GridView.builder(
+                        itemCount: notes.length,
+                        gridDelegate:
+                            orientation == Orientation.portrait &&
+                                shortestSide < 600
+                            ? SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 6,
+                                crossAxisSpacing: 6,
+                                childAspectRatio: 0.9,
+                              )
+                            : SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent: 250,
+                                mainAxisSpacing: 6,
+                                crossAxisSpacing: 6,
+                                childAspectRatio: 0.9,
+                              ),
+                        itemBuilder: (context, index) {
+                          return ItemNote(note: notes[index]);
+                        },
                       );
                     },
                   ),

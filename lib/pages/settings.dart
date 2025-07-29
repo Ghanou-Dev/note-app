@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/const.dart';
 import 'package:notes/l10n/app_localizations.dart';
 import 'package:notes/main.dart';
@@ -44,7 +45,7 @@ class _SettingsState extends State<Settings> {
                   style: TextStyle(
                     color: secondaryColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
                 Row(
@@ -63,7 +64,7 @@ class _SettingsState extends State<Settings> {
                   ],
                 ),
                 SizedBox(
-                  height: 100,
+                  height: 100.h,
                   child: ListView(
                     children: [
                       BlocBuilder<SettingsCubit, SettingsState>(

@@ -1,5 +1,7 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notes/const.dart';
 import 'package:notes/models/note_model.dart';
@@ -23,7 +25,14 @@ void main() async {
   await Hive.openBox<NoteModel>(kDeletedNotes);
   SharedPreferences prf = await SharedPreferences.getInstance();
   bool isEn = prf.getBool(kLangEn) ?? true;
-  runApp(Notes(isEn: isEn));
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) {
+        return Notes(isEn: isEn);
+      },
+    ),
+  );
 }
 
 class Notes extends StatefulWidget {
@@ -58,33 +67,43 @@ class _NotesState extends State<Notes> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => HomeCubit()),
-        BlocProvider(create: (context) => DisplayCubit()),
-        BlocProvider(create: (context) => FavorietCubit()),
-        BlocProvider(create: (context) => DeleteCubit()),
-      ],
-      child: MaterialApp(
-        locale: _locale,
-        supportedLocales: [Locale('en'), Locale('ar')],
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        ////////////////////////////////////////////////////////////////////////
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: secondaryColor),
-        ),
-        debugShowCheckedModeBanner: false,
-        initialRoute: Splash.pageRoute,
-        routes: {
-          Splash.pageRoute: (context) => const Splash(),
-          HomePage.pageRoute: (context) => const HomePage(),
-        },
-      ),
+    final Size size = MediaQuery.of(context).size;
+    final height = size.height;
+    final width = size.width;
+    return ScreenUtilInit(
+      designSize: Size(width, height),
+      minTextAdapt: true,
+
+      builder: (context, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => HomeCubit()),
+            BlocProvider(create: (context) => DisplayCubit()),
+            BlocProvider(create: (context) => FavorietCubit()),
+            BlocProvider(create: (context) => DeleteCubit()),
+          ],
+          child: MaterialApp(
+            locale: _locale,
+            supportedLocales: [Locale('en'), Locale('ar')],
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            ////////////////////////////////////////////////////////////////////////
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: secondaryColor),
+            ),
+            debugShowCheckedModeBanner: false,
+            initialRoute: Splash.pageRoute,
+            routes: {
+              Splash.pageRoute: (context) => const Splash(),
+              HomePage.pageRoute: (context) => const HomePage(),
+            },
+          ),
+        );
+      },
     );
   }
 }

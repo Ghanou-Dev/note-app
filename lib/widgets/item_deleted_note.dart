@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:notes/const.dart';
 import 'package:notes/models/note_model.dart';
@@ -17,7 +18,7 @@ class ItemDeletedNote extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           gradient: LinearGradient(colors: <Color>[therdColor, therdColor]),
         ),
         child: Padding(
@@ -34,7 +35,7 @@ class ItemDeletedNote extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 18,
+                        fontSize: 18.sp,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -45,7 +46,7 @@ class ItemDeletedNote extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: Text(
                     deletedNote.content,
-                    style: TextStyle(color: Colors.black45, fontSize: 17),
+                    style: TextStyle(color: Colors.black45, fontSize: 17.sp),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),

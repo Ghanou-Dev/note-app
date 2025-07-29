@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemLanguage extends StatelessWidget {
   final String language;
@@ -16,11 +17,11 @@ class ItemLanguage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r)),
         child: Row(
           children: [
             Icon(Icons.language),
-            const SizedBox(width: 10),
+             SizedBox(width: 10.w),
             Text(language),
             const Spacer(),
             Checkbox(

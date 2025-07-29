@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/const.dart';
 import 'package:notes/l10n/app_localizations.dart';
@@ -25,7 +26,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     return Container(
       decoration: BoxDecoration(
         color: primaryColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(20.r),
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -41,7 +42,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
               isTitle: false,
               controller: noteController,
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 50.h),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
