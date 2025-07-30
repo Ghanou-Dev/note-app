@@ -36,32 +36,32 @@ class CustomEditTextField extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               color: Colors.grey,
               fontWeight: FontWeight.bold,
             ),
             border: isTitle
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.r),
-                    borderSide: BorderSide(color: secondaryColor),
+                    borderSide: const BorderSide(color: secondaryColor),
                   )
-                : UnderlineInputBorder(
+                : const UnderlineInputBorder(
                     borderSide: BorderSide(color: secondaryColor),
                   ),
             focusedBorder: isTitle
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.r),
-                    borderSide: BorderSide(color: secondaryColor),
+                    borderSide:const BorderSide(color: secondaryColor),
                   )
-                : UnderlineInputBorder(
+                : const UnderlineInputBorder(
                     borderSide: BorderSide(color: secondaryColor),
                   ),
             enabledBorder: isTitle
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.r),
-                    borderSide: BorderSide(color: Colors.grey),
+                    borderSide: const BorderSide(color: Colors.grey),
                   )
-                : UnderlineInputBorder(
+                : const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.grey),
                   ),
           ),
