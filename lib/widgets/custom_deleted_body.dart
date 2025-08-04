@@ -52,13 +52,13 @@ class CustomDeletedBody extends StatelessWidget {
                         gridDelegate:
                             orientation == Orientation.portrait &&
                                 shortestSide < 600
-                            ? SliverGridDelegateWithFixedCrossAxisCount(
+                            ? const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 6,
                                 crossAxisSpacing: 6,
                                 childAspectRatio: 0.9,
                               )
-                            : SliverGridDelegateWithMaxCrossAxisExtent(
+                            : const SliverGridDelegateWithMaxCrossAxisExtent(
                                 maxCrossAxisExtent: 250,
                                 mainAxisSpacing: 6,
                                 crossAxisSpacing: 6,

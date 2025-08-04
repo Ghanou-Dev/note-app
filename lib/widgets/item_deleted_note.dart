@@ -19,7 +19,7 @@ class ItemDeletedNote extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-          gradient: LinearGradient(colors: <Color>[therdColor, therdColor]),
+          gradient: const LinearGradient(colors: <Color>[therdColor, therdColor]),
         ),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -62,11 +62,11 @@ class ItemDeletedNote extends StatelessWidget {
                         context.read<HomeCubit>().fetchAllNotes();
                         context.read<DeleteCubit>().fetchAllDeletedNotes();
                       },
-                      icon: Icon(FontAwesomeIcons.trash),
+                      icon: const Icon(FontAwesomeIcons.trash),
                     ),
                     IconButton(
                       onPressed: () async {
-                        // remove frome delet
+                        // remove frome delete
                         await context.read<DeleteCubit>().deleteNote(
                           note: deletedNote,
                         );
