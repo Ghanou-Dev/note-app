@@ -31,7 +31,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            CustomColorsListView(),
+            const CustomColorsListView(),
             CustomEditTextField(
               hint: locale.title,
               isTitle: true,
@@ -65,7 +65,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 ),
                 child: Text(
                   locale.add,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: primaryColor,
                   ),

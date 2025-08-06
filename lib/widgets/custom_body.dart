@@ -21,7 +21,7 @@ class CustomBody extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: CustomSearchBar(notes: notes),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 locale.no_notes,
                 style: TextStyle(
@@ -30,7 +30,7 @@ class CustomBody extends StatelessWidget {
                   color: secondaryColor,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           )
         : Column(
@@ -49,13 +49,13 @@ class CustomBody extends StatelessWidget {
                         gridDelegate:
                             orientation == Orientation.portrait &&
                                 shortestSide < 600
-                            ? SliverGridDelegateWithFixedCrossAxisCount(
+                            ? const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 6,
                                 crossAxisSpacing: 6,
                                 childAspectRatio: 0.9,
                               )
-                            : SliverGridDelegateWithMaxCrossAxisExtent(
+                            : const SliverGridDelegateWithMaxCrossAxisExtent(
                                 maxCrossAxisExtent: 250,
                                 mainAxisSpacing: 6,
                                 crossAxisSpacing: 6,

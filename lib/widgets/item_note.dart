@@ -29,7 +29,7 @@ class ItemNote extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.r),
-              gradient: LinearGradient(colors: <Color>[therdColor, therdColor]),
+              gradient: const LinearGradient(colors: <Color>[therdColor, therdColor]),
             ),
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -76,7 +76,7 @@ class ItemNote extends StatelessWidget {
                               },
                             );
                           },
-                          icon: Icon(FontAwesomeIcons.trash),
+                          icon: const Icon(FontAwesomeIcons.trash),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10.0),

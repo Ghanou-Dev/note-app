@@ -21,7 +21,7 @@ class CustomDeletedBody extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: CustomSearchBar(notes: deletedNotes),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 locale.no_notes,
                 style: TextStyle(
@@ -30,7 +30,7 @@ class CustomDeletedBody extends StatelessWidget {
                   color: secondaryColor,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           )
         : Column(

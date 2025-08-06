@@ -33,20 +33,20 @@ class CustomListTile extends StatelessWidget {
                 color: Colors.black87,
               ),
             ),
-            Spacer(),
+            const Spacer(),
             len > 0
                 ? CircleAvatar(
                     radius: 13.r,
                     backgroundColor: forthColor,
                     child: Text(
                       '$len',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: primaryColor,
                       ),
                     ),
                   )
-                : Spacer(),
+                : const Spacer(),
           ],
         ),
       ),

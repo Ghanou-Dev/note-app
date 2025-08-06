@@ -28,7 +28,7 @@ class _SettingsState extends State<Settings> {
           backgroundColor: primaryColor,
           title: Text(
             locale.settings,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               color: secondaryColor,
             ),
@@ -40,7 +40,7 @@ class _SettingsState extends State<Settings> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Divider(color: forthColor),
+                const Divider(color: forthColor),
                 Text(
                   locale.general,
                   style: TextStyle(
@@ -51,12 +51,12 @@ class _SettingsState extends State<Settings> {
                 ),
                 Row(
                   children: [
-                    Icon(Icons.translate, color: secondaryColor, size: 20),
+                    const Icon(Icons.translate, color: secondaryColor, size: 20),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         locale.language,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: secondaryColor,
                         ),
@@ -84,8 +84,8 @@ class _SettingsState extends State<Settings> {
                                 );
                                 Locale newLocale =
                                     currentLocal.languageCode == 'en'
-                                    ? Locale('ar')
-                                    : Locale('en');
+                                    ? const Locale('ar')
+                                    : const Locale('en');
                                 Notes.setLocale(context, newLocale);
                                 context.read<SettingsCubit>().changeLang(
                                   newLocale: newLocale,
@@ -102,8 +102,8 @@ class _SettingsState extends State<Settings> {
                               );
                               Locale newLocale =
                                   currentLocal.languageCode == 'en'
-                                  ? Locale('ar')
-                                  : Locale('en');
+                                  ? const Locale('ar')
+                                  : const Locale('en');
                               Notes.setLocale(context, newLocale);
                               context.read<SettingsCubit>().changeLang(
                                 newLocale: newLocale,
@@ -128,8 +128,8 @@ class _SettingsState extends State<Settings> {
                                 );
                                 Locale newLocale =
                                     currentLocal.languageCode == 'en'
-                                    ? Locale('ar')
-                                    : Locale('en');
+                                    ? const Locale('ar')
+                                    : const Locale('en');
                                 Notes.setLocale(context, newLocale);
                                 context.read<SettingsCubit>().changeLang(
                                   newLocale: newLocale,
@@ -146,8 +146,8 @@ class _SettingsState extends State<Settings> {
                               );
                               Locale newLocale =
                                   currentLocal.languageCode == 'en'
-                                  ? Locale('ar')
-                                  : Locale('en');
+                                  ? const Locale('ar')
+                                  : const Locale('en');
                               Notes.setLocale(context, newLocale);
                               context.read<SettingsCubit>().changeLang(
                                 newLocale: newLocale,
@@ -159,7 +159,7 @@ class _SettingsState extends State<Settings> {
                     ],
                   ),
                 ),
-                Divider(color: forthColor),
+                const Divider(color: forthColor),
               ],
             ),
           ),

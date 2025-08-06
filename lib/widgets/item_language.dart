@@ -20,7 +20,7 @@ class ItemLanguage extends StatelessWidget {
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.r)),
         child: Row(
           children: [
-            Icon(Icons.language),
+            const Icon(Icons.language),
              SizedBox(width: 10.w),
             Text(language),
             const Spacer(),

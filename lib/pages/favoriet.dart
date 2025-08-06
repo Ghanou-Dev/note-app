@@ -19,7 +19,7 @@ class Favoriet extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           locale.favoriets,
-          style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
+          style: const TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         backgroundColor: primaryColor,
       ),

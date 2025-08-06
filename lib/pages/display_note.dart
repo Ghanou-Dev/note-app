@@ -64,7 +64,7 @@ class _DisplayNoteState extends State<DisplayNote> {
         backgroundColor: primaryColor,
         title: Text(
           locale.edit,
-          style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
+          style: const TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
         actions: <Widget>[
           IconButton(
@@ -106,7 +106,7 @@ class _DisplayNoteState extends State<DisplayNote> {
           context.read<FavorietCubit>().fetchAllFavorietNotes();
           Navigator.pop(context);
         },
-        child: Icon(FontAwesomeIcons.check, color: primaryColor),
+        child: const Icon(FontAwesomeIcons.check, color: primaryColor),
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -35,7 +35,7 @@ class _SplashState extends State<Splash> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => HomePage()),
+      MaterialPageRoute(builder: (context) => const HomePage()),
     );
   }
 
@@ -46,7 +46,7 @@ class _SplashState extends State<Splash> {
       body: Center(
         child: Image.asset(
           'assets/images/logo.png',
-        ).animate().fadeOut(delay: 1.seconds, duration: Duration(seconds: 2)),
+        ).animate().fadeOut(delay: 1.seconds, duration: const Duration(seconds: 2)),
       ),
     );
   }

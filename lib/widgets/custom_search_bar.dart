@@ -25,7 +25,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
     bool didJustDismis = false;
     return Theme(
       data: ThemeData(
-        textSelectionTheme: TextSelectionThemeData(
+        textSelectionTheme: const TextSelectionThemeData(
           cursorColor: secondaryColor,
           selectionHandleColor: secondaryColor,
         ),
@@ -40,37 +40,37 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         },
         ////////////////////////////////////////////////////////////////////////
         child: SearchAnchor.bar(
-          barBackgroundColor: WidgetStatePropertyAll(primaryColor),
+          barBackgroundColor: const WidgetStatePropertyAll(primaryColor),
           barShape: WidgetStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(20.r),
             ),
           ),
           barHintText: locale.search,
-          barPadding: WidgetStatePropertyAll(EdgeInsets.all(15)),
-          barTextStyle: WidgetStatePropertyAll(
+          barPadding: const WidgetStatePropertyAll(EdgeInsets.all(15)),
+          barTextStyle: const WidgetStatePropertyAll(
             TextStyle(fontWeight: FontWeight.bold),
           ),
-          barHintStyle: WidgetStatePropertyAll(
+          barHintStyle: const WidgetStatePropertyAll(
             TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
           ),
           barLeading: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.search, color: secondaryColor),
+            icon: const Icon(Icons.search, color: secondaryColor),
           ),
           barTrailing: [
             IconButton(
               onPressed: () {
                 searchController.clear();
               },
-              icon: Icon(Icons.clear, color: secondaryColor),
+              icon: const Icon(Icons.clear, color: secondaryColor),
             ),
           ],
 
-          barOverlayColor: WidgetStatePropertyAll(
+          barOverlayColor: const WidgetStatePropertyAll(
             primaryColor,
           ), // whern get out from bar
-          barSide: WidgetStatePropertyAll(BorderSide(color: primaryColor)),
+          barSide: const WidgetStatePropertyAll(BorderSide(color: primaryColor)),
           viewBackgroundColor: primaryColor,
           searchController: searchController,
           suggestionsBuilder: (context, controller) {
@@ -84,7 +84,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
               return ListTile(
                 title: Text(
                   note.title,
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
                   didJustDismis = true;
@@ -106,7 +106,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 ListTile(
                   title: Text(
                     locale.no_notes,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ];

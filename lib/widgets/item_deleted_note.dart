@@ -80,7 +80,7 @@ class ItemDeletedNote extends StatelessWidget {
                         ////////////////////////////////////////////////////////
                         context.read<FavorietCubit>().fetchAllFavorietNotes(); 
                       },
-                      icon: Icon(Icons.refresh, color: secondaryColor),
+                      icon: const Icon(Icons.refresh, color: secondaryColor),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),

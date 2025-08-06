@@ -55,7 +55,7 @@ class _NotesState extends State<Notes> {
   void initState() {
     super.initState();
     setState(() {
-      _locale = widget.isEn ? Locale('en') : Locale('ar');
+      _locale = widget.isEn ? const Locale('en') : const Locale('ar');
     });
   }
 
@@ -84,7 +84,7 @@ class _NotesState extends State<Notes> {
           ],
           child: MaterialApp(
             locale: _locale,
-            supportedLocales: [Locale('en'), Locale('ar')],
+            supportedLocales: [const Locale('en'), const Locale('ar')],
             localizationsDelegates: [
               AppLocalizations.delegate,
               GlobalMaterialLocalizations.delegate,

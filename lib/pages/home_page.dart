@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await precacheImage(AssetImage('assets/images/logo.png'), context);
+      await precacheImage(const AssetImage('assets/images/logo.png'), context);
     });
   }
 
@@ -84,15 +84,15 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: primaryColor,
         title: Text(
           locale.keep_note,
-          style: TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
+          style: const TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
         ),
-        iconTheme: IconThemeData(color: secondaryColor),
+        iconTheme: const IconThemeData(color: secondaryColor),
         actions: [
           InkWell(
             onTap: () {},
             borderRadius: BorderRadius.circular(40),
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
+            child: const Padding(
+              padding: EdgeInsets.all(15.0),
               child: Icon(Icons.light_mode, color: secondaryColor),
             ),
           ),
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             locale.user,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 16,
                               color: forthColor,
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Text(
                             '${locale.to_day} : ${DateFormat('yyyy/MM/dd').format(DateTime.now())}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.normal,
                               fontSize: 14,
                               color: secondaryColor,
@@ -137,8 +137,8 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Divider(color: forthColor),
               ),
               CustomListTile(
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Reminders()),
+                    MaterialPageRoute(builder: (context) => const Reminders()),
                   );
                 },
                 hint: locale.reminders,
@@ -239,15 +239,15 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ), /////////////////////////////////////////////////////////////////////////
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Divider(color: forthColor),
               ),
               CustomListTile(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Settings()),
+                    MaterialPageRoute(builder: (context) => const Settings()),
                   );
                 },
                 hint: locale.settings,
@@ -273,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: BlocProvider(
                   create: (context) => BottomSheetCubit(),
-                  child: CustomBottomSheet(),
+                  child: const CustomBottomSheet(),
                 ),
               );
             },
@@ -283,9 +283,12 @@ class _HomePageState extends State<HomePage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusGeometry.circular(40),
         ),
-        child: Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
-      body: CustomBody(notes: notes),
+      body: Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: CustomBody(notes: notes),
+      ),
     );
   }
 }

@@ -11,7 +11,7 @@ class Reminders extends StatelessWidget {
       backgroundColor: primaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
-        title: Text("Reminders", style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text("Reminders", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       body: Center(
         child: Text(
