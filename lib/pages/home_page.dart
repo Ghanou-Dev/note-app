@@ -79,26 +79,38 @@ class _HomePageState extends State<HomePage> {
     required AppLocalizations locale,
   }) {
     return Scaffold(
+      key: const Key(homeBodyKey),
       backgroundColor: primaryColor,
       appBar: AppBar(
+        key: const Key(homeAppBarKey),
         backgroundColor: primaryColor,
         title: Text(
+          key: const Key(titleHomeAppBarKey),
           locale.keep_note,
-          style: const TextStyle(fontWeight: FontWeight.bold, color: secondaryColor),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: secondaryColor,
+          ),
         ),
         iconTheme: const IconThemeData(color: secondaryColor),
         actions: [
           InkWell(
+            key: const Key(buttonThemeKey),
             onTap: () {},
             borderRadius: BorderRadius.circular(40),
             child: const Padding(
               padding: EdgeInsets.all(15.0),
-              child: Icon(Icons.light_mode, color: secondaryColor),
+              child: Icon(
+                key: Key(iconButtonThemeKey),
+                Icons.light_mode,
+                color: secondaryColor,
+              ),
             ),
           ),
         ],
       ),
       drawer: Drawer(
+        key: const Key(homeDrawerKey),
         backgroundColor: primaryColor,
         child: SingleChildScrollView(
           child: Column(
@@ -286,7 +298,9 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(Icons.add, color: Colors.white),
       ),
       body: Padding(
-        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: CustomBody(notes: notes),
       ),
     );

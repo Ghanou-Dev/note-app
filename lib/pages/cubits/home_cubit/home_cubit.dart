@@ -10,8 +10,8 @@ class HomeCubit extends Cubit<HomeState> {
   // logic ..
   List<NoteModel> notes = [];
 
-  void fetchAllNotes() {
-    Box<NoteModel> notesBox = Hive.box<NoteModel>(kNotesBox);
+  void fetchAllNotes({Box<NoteModel>? noteBox}) {
+    Box<NoteModel> notesBox = noteBox ?? Hive.box<NoteModel>(kNotesBox);
     notes = notesBox.values.toList();
     emit(HomeSuccess(notes: notes));
   }

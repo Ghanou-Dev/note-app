@@ -16,6 +16,7 @@ class CustomBody extends StatelessWidget {
     final shortestSide = MediaQuery.of(context).size.shortestSide;
     return notes.isEmpty
         ? Column(
+          key: const Key(customBodyKey),
             children: [
               Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -34,6 +35,7 @@ class CustomBody extends StatelessWidget {
             ],
           )
         : Column(
+            key: const Key(customBodyKey), 
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(15),

@@ -19,3 +19,16 @@ const List<int> kColors = [
   0xffe76f51,
 ];
 
+// keys of widgets
+const String homeBodyKey = 'homeBody';
+const String homeAppBarKey = 'appBar';
+const String titleHomeAppBarKey = 'titleAppBar';
+const String iconButtonThemeKey = 'iconTheme';
+const String homeDrawerKey = 'homeDrawer';
+const String buttonThemeKey = 'buttonTheme';
+const String customBodyKey = 'customBody';
+const String customSearchBarKey = 'customSearchBar';
+const String focusScopeKey = 'focusScopeKey';
+const String listTileResultSearchSuccessKey = 'listTileResultSearchSuccessKey';
+const String listTileResultSearchFailureKey = 'listTileResultSearchFailureKey';
+

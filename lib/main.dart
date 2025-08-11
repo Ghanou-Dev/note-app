@@ -70,6 +70,7 @@ class _NotesState extends State<Notes> {
     final Size size = MediaQuery.of(context).size;
     final height = size.height;
     final width = size.width;
+    debugPrint('width: $width - height: $height');
     return ScreenUtilInit(
       designSize: Size(width, height),
       minTextAdapt: true,

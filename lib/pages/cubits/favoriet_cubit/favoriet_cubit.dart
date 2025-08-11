@@ -8,8 +8,8 @@ class FavorietCubit extends Cubit<FavorietState> {
   FavorietCubit() : super(FavorietInitial());
 
   List<NoteModel> favorietNotesList = [];
-  void fetchAllFavorietNotes() {
-    Box<NoteModel> notesBox = Hive.box<NoteModel>(kNotesBox);
+  void fetchAllFavorietNotes({Box<NoteModel>? noteBox }) {
+    Box<NoteModel> notesBox = noteBox ?? Hive.box<NoteModel>(kNotesBox);
     favorietNotesList = notesBox.values.where((note) => note.isFavoriet == true ).toList();
     emit(FavorietSucess(favorietNotes: favorietNotesList));
   }

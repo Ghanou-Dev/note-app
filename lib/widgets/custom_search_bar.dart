@@ -20,10 +20,10 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    ////////////////////////////////////////////
     final FocusScopeNode focusNode = FocusScopeNode();
     bool didJustDismis = false;
     return Theme(
+      key: const Key(customSearchBarKey),
       data: ThemeData(
         textSelectionTheme: const TextSelectionThemeData(
           cursorColor: secondaryColor,
@@ -31,6 +31,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         ),
       ),
       child: FocusScope(
+        key: const Key(focusScopeKey),
         node: focusNode,
         onFocusChange: (isFocused) {
           if (didJustDismis & isFocused) {
@@ -38,7 +39,6 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             focusNode.unfocus();
           }
         },
-        ////////////////////////////////////////////////////////////////////////
         child: SearchAnchor.bar(
           barBackgroundColor: const WidgetStatePropertyAll(primaryColor),
           barShape: WidgetStatePropertyAll(
@@ -82,6 +82,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
 
             final results = filtred.map((note) {
               return ListTile(
+                key: const Key(listTileResultSearchSuccessKey),
                 title: Text(
                   note.title,
                   style: const TextStyle(fontWeight: FontWeight.bold),
@@ -104,6 +105,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             if (results.isEmpty) {
               return [
                 ListTile(
+                  key: const Key(listTileResultSearchFailureKey),
                   title: Text(
                     locale.no_notes,
                     style: const TextStyle(fontWeight: FontWeight.bold),

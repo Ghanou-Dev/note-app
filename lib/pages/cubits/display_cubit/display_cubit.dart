@@ -22,9 +22,4 @@ class DisplayCubit extends Cubit<DisplayState> {
     emit(DisplaySuccess(note: note));
   }
 
-  // Future<void> addDeletedNoteToFavorietList({required NoteModel note}) async {
-  //   bool isSelected = note.isFavoriet;
-  //   Box<NoteModel> favorietNotes = Hive.box(kFavorietNotes);
-    
-  // }
 }
