@@ -140,7 +140,7 @@ class DeleteDialog extends StatelessWidget {
             homeCubit.fetchAllNotes();
             ////////////////////////////////////////////////////////////////////
             context.read<FavorietCubit>().fetchAllFavorietNotes();
-            ////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////
             Navigator.pop(context);
           },
           child: Text(appLocale.contine),
